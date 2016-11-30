@@ -1,15 +1,16 @@
 ---
 layout: page
-title: About
-permalink: /about/
+title: Who am I
+permalink: /whoami/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/)
+Hey there!
+I'm Tamas, a software engineer / consultant currently living in Leeds, UK.
 
-You can find the source code for the Jekyll new theme at:
-{% include icon-github.html username="jekyll" %} /
-[minima](https://github.com/jekyll/minima)
+If you have any questions, or comments about my posts, feel free to get in touch!
 
-You can find the source code for Jekyll at
-{% include icon-github.html username="jekyll" %} /
-[jekyll](https://github.com/jekyll/jekyll)
+### Disclaimer
+The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way.
+
+### Contact me
+[contact@tamas-santa.com](mailto:contact@tamas-santa.com)
