@@ -6,11 +6,6 @@ title: Markdown Playground
 Since I'm new to Markdown and Jekyll in general, let's use this post to experiment with the formatting capabilities of the platform.
 
 # H1
-## H2
-### H3
-#### H4
-##### H5
-###### H6
 
 Emphasis, aka italics, with *asterisks* or _underscores_.
 Strong emphasis, aka bold, with **asterisks** or __underscores__.
