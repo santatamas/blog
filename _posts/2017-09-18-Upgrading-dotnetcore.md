@@ -3,9 +3,9 @@ layout: post
 title: Upgrading dotnetcore broke NuGet in VS for Mac
 ---
 
-It has been about a full year since I’ve posted anything here, but yesterday I had quite an interesting journey while I was trying to update dotnetcore. I thought it worth a blog post, because I’m pretty sure others WILL encounter the same issue eventually.
+It has been about a full year since I posted anything here, but yesterday I had quite an interesting journey while I was trying to update dotnetcore. I thought it worth a blog post, because I’m pretty sure others WILL encounter the same issue eventually.
 
-So a little background info. I’m working on one of my projects, which involves an **angular4** frontend with a **dotnetcore** API backend. Pretty standard setup. Yesterday I’ve decided that it’s time to do the **1.1 -> 2.0** upgrade.
+So a little background info. I’m working on one of my projects, which involves an **angular4** frontend with a **dotnetcore** API backend. Pretty standard setup. Yesterday I decided that it’s time to do the **1.1 -> 2.0** upgrade.
 
 It’s supposed to be really simple, just a matter of changing the target framework to netcoreapp2.0 for the API, and netstandard2.0 for the libraries, right?
 I went ahead and did that. The dotnet restore and dotnet build  cli commands went green, everything looked fine.
@@ -26,7 +26,7 @@ Restore failed for 'Microsoft.AspNetCore.Server.Abstractions (>= 2.0.0)
 Restore failed for 'Microsoft.AspNetCore.Http.Features (>= 2.0.0)
 ```
 
-Just a sidenote, VS Mac uses it’s own nuget package manager instead of calling the cli tool (as opposed to VS Code)
+Just a sidenote, VS Mac uses its own nuget package manager instead of calling the cli tool (as opposed to VS Code)
 
 What happened here? It looks like it cannot find the required packages for dotnetcore 2.0.
 Unfortunately, I don’t have the full package manager log, but I can tell you that it used the [https://api.nuget.org/v3/index.json](https://api.nuget.org/v3/index.json) NuGet feed to look up the package information. I went ahead and opened the urls in my browser, and low and behold...the proper versions were there!
