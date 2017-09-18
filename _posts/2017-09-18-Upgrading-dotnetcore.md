@@ -10,7 +10,7 @@ So a little background info. I’m working on one of my projects, which involves
 It’s supposed to be really simple, just a matter of changing the target framework to netcoreapp2.0 for the API, and netstandard2.0 for the libraries, right?
 I went ahead and did that. The dotnet restore and dotnet build  cli commands went green, everything looked fine.
 
-Until I wanted to open the solution **Visual Studio for Mac 7.2** (*aka. Monodevelop*). That’s what I prefer for .NET development on my macbook. I could have used VS Code, but imho the debugging experience is still generally better with VS Mac.
+Until I wanted to open the solution in **Visual Studio for Mac 7.2** (*aka. Monodevelop*). That’s what I prefer for .NET development on my macbook. I could have used VS Code, but imho the debugging experience is still generally better with VS Mac.
 
 After opening the solution, it tried to restore the NuGet packages as always. This time though, it resulted in the following errors:
 
