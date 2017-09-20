@@ -11,6 +11,8 @@ description: Engineering for everyone
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
 avatar: https://avatars2.githubusercontent.com/u/2805399?v=3&s=460
 
+theme: jekyll-theme-cayman
+
 #
 # Flags below are optional
 #
