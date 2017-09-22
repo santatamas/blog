@@ -61,12 +61,6 @@ Add the following NuGet package reference to the .csproj:
 
 To connect to the *local* DB, we're going to use the official sample class. The only thing I had to change is the `DatastoreClient` initialisation, as the default constructor will use the real service.
 
-**Don't believe the emulator's lies!**
-
-
-Setting the `DATASTORE_EMULATOR_HOST=0.0.0.0:8081` environment variable does **NOT** work with the dotnetcore client. Again, because *reasons*.
-
-Below you can find the full class:
 ```c#
 static void Main(string[] args)
 {
@@ -98,6 +92,11 @@ static void Main(string[] args)
     }
 }
 ```
+
+**Don't believe the emulator's lies!**
+
+
+Setting the `DATASTORE_EMULATOR_HOST=0.0.0.0:8081` environment variable does **NOT** work with the dotnetcore client. Again, because *reasons*.
 
 We're almost set. If you try to run it now, it'll complain about missing credentials. Weird stuff, because I'd expect it to just work locally with a custom client, but nah...
 You'll have to get your credentials from the [Google Cloud Console](https://console.cloud.google.com/apis/credentials)
