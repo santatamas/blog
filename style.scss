@@ -19,13 +19,13 @@ html {
 
 body {
 	background: $white;
-  font: 18px/1.4 $helvetica;
+  font: 16px/1.4 $helvetica;
   color: $darkGray;
 }
 
 .container {
   margin: 0 auto;
-  max-width: 740px;
+  max-width: 900px;
   padding: 0 10px;
   width: 100%;
 }
@@ -299,4 +299,12 @@ table {
 table tr {
   background-color: #fff;
   border-top: 1px solid #ccc;
+}
+
+code {
+  font-size:15px!important;
+}
+
+code.highlighter-rouge {
+  background-color: #efefef;
 }
