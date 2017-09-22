@@ -15,7 +15,10 @@ In my experience so far (I've only worked with DynamoDB before), the main hassle
 Both AWS and Google provides slimmed down emulators for their services. In case of DynamoDB it's a runnable jar file. Google decided to bundle their emulators (plural, because they have emulators for literally everything) into the gcloud SDK.
 
 Here are some links I found useful:
-[Running the Cloud Datastore Emulator](https://cloud.google.com/datastore/docs/tools/datastore-emulator#connecting_your_app_to_the_local_development_server)
+
+
+[Running the Cloud Datastore Emulator](https://cloud.google.com/datastore/docs/tools/datastore-emulator)
+
 
 [GCloud SDK](https://cloud.google.com/sdk/docs/quickstart-mac-os-x)
 
@@ -29,11 +32,11 @@ docker run --rm -e CLOUDSDK_CORE_PROJECT=aaaaaaa-aaaaa-111111 -p 8081:8081 googl
 --host=0.0.0.0 --port=8081 --testing
 ```
 
-But wait, what do we have here? The **docker run** should be familiar to everyone. We have to provide the **CLOUDSDK_CORE_PROJECT** environment variable to the container, because *reasons*. You can leave it as it is, the server doesn't actually *need* a project ID. But it won't start without it. Go figure.
+But wait, what do we have here? The `docker run` should be familiar to everyone. We have to provide the `CLOUDSDK_CORE_PROJECT` environment variable to the container, because *reasons*. You can leave it as it is, the server doesn't actually *need* a project ID. But it won't start without it. Go figure.
 
 Then we publish the 8081 port to the host, so our sample app will be able to connect to the container. Then we specify the image. The latest image contains all the SDK components pre-installed, so if you fancy a slimmed-down version, you should build your own.
 
-The last bit points to the emulator binary, and tells it to start up and listen on the **0.0.0.0** address. By default it's listening on *localhost*, and that makes it impossible to access it from outside the container. Hence the overcomplicated startup parameters. I won't even tell you how much time I spent on figuring this one out :)
+The last bit points to the emulator binary, and tells it to start up and listen on the `0.0.0.0` address. By default it's listening on *localhost*, and that makes it impossible to access it from outside the container. Hence the overcomplicated startup parameters. I won't even tell you how much time I spent on figuring this one out :)
 
 Once it's up and running, you will see something like this on the output:
 ```shell
@@ -45,11 +48,11 @@ If you are using a library that supports the DATASTORE_EMULATOR_HOST environment
 Dev App Server is now running.
 ```
 
-A quick **curl http://localhost:8081** should result in an **Ok** response. Our dev server is up and running!
+A quick `curl http://localhost:8081` should result in an **Ok** response. Our dev server is up and running!
 
 # Accessing DB from dotnetcore
 
-Let's move on to the dotnet part, by creating a simple console application with **dotnet new console**.
+Let's move on to the dotnet part, by creating a simple console application with `dotnet new console`.
 
 Add the following NuGet package reference to the .csproj:
 ```xml
@@ -58,10 +61,10 @@ Add the following NuGet package reference to the .csproj:
 </ItemGroup>
 ```
 
-To connect to the *local* DB, we're going to use the official sample class. The only thing I had to change is the *DatastoreClient* initialisation, as the default constructor will use the real service.
+To connect to the *local* DB, we're going to use the official sample class. The only thing I had to change is the `DatastoreClient` initialisation, as the default constructor will use the real service.
 
 **Don't believe the emulator's lies!**
-Setting the *DATASTORE_EMULATOR_HOST=0.0.0.0:8081* environment variable does **NOT** work with the dotnetcore client. Again, because *reasons*.
+Setting the `DATASTORE_EMULATOR_HOST=0.0.0.0:8081` environment variable does **NOT** work with the dotnetcore client. Again, because *reasons*.
 
 Below you can find the full class:
 ```c#
@@ -98,11 +101,13 @@ static void Main(string[] args)
 
 We're almost set. If you try to run it now, it'll complain about missing credentials. Weird stuff, because I'd expect it to just work locally with a custom client, but nah...
 You'll have to get your credentials from the [Google Cloud Console](https://console.cloud.google.com/apis/credentials)
-Click *"Create credentials"* -> *"Service account key"*
+
+
+Click `"Create credentials"* -> *"Service account key"`
 
 This should download your creds in JSON.
 Save it to somewhere safe, and add the following environment variable to the project's startup parameters:
-*GOOGLE_APPLICATION_CREDENTIALS={PATH_TO_YOUR_CREDS_FILE}*
+`GOOGLE_APPLICATION_CREDENTIALS={PATH_TO_YOUR_CREDS_FILE}`
 
 Now we're set! Run your project, and if everything's working correctly, you'll see the following output:
 
