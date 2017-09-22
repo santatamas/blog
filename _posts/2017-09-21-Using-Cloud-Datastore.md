@@ -14,8 +14,6 @@ In my experience so far (I've only worked with DynamoDB before), the main hassle
 
 Both AWS and Google provides slimmed down emulators for their services. In case of DynamoDB it's a runnable jar file. Google decided to bundle their emulators (plural, because they have emulators for literally everything) into the gcloud SDK.
 
-Here are some links I found useful:
-
 
 [Running the Cloud Datastore Emulator](https://cloud.google.com/datastore/docs/tools/datastore-emulator)
 
@@ -103,7 +101,7 @@ We're almost set. If you try to run it now, it'll complain about missing credent
 You'll have to get your credentials from the [Google Cloud Console](https://console.cloud.google.com/apis/credentials)
 
 
-Click `"Create credentials"* -> *"Service account key"`
+Click `Create credentials -> Service account key`
 
 This should download your creds in JSON.
 Save it to somewhere safe, and add the following environment variable to the project's startup parameters:
