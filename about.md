@@ -14,3 +14,5 @@ The opinions expressed herein are my own personal opinions and do not represent 
 
 ### Contact me
 [contact@tamas-santa.com](mailto:contact@tamas-santa.com)
+
+{% include paypal.html %}
