@@ -26,7 +26,7 @@ I have to mention that I ran the tests at home, and even though I have pretty go
 
 Personally, I'm quite satisfied with the performance, especially considering that it's free.
 
-What I found interesting is the sheer amount of indexes it generates to the dataset **by default**.
+What I found interesting is the sheer amount of indexes it generates for the dataset **by default**.
 ![alt text](/images/articles/datastore.png "Cloud Datastore Dashboard")
 
 As you can see, the size of the indexes is **6 times** the size of the actual data.
