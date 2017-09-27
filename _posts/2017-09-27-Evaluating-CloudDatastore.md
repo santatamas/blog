@@ -16,7 +16,6 @@ Cloud Datastore is advertised as:
 ``` Massive scalability with high performance. Cloud Datastore uses a distributed architecture to automatically manage scaling. Cloud Datastore uses a mix of indexes and query constraints so your queries scale with the size of your result set, not the size of your data set.```
 
 I've decided to give it a try, and test this statement. I've seeded the datastore with ~9000 entities, then ran a set of predefined queries, with pseudo-random search terms (which all had a guaranteed number of results).
-Here are the results:
 
 ![](/images/articles/testresult.png "Query test result")
 
@@ -45,7 +44,7 @@ What can we do then? I did what's considered the standard fall-back solution in 
 I could tweak this by inserting word fragments into the search tags, but for now I guess it's good-enough for my purposes. Obviously, I don't consider this a proper and long-term solution.
 
 # Backup / Restore
-Doing backups and restores are surprisingly easy.
+Doing backups and restores is surprisingly easy.
 
 First, you have to enable the Admin application on the Cloud Console:
 ![alt text](/images/articles/console_admin.png "Admin section")
