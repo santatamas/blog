@@ -12,6 +12,7 @@ As I successfully integrated my dotnetcore API with Cloud Datastore I wanted to 
 
 # Performance
 Cloud Datastore is advertised as:
+
 ``` Massive scalability with high performance. Cloud Datastore uses a distributed architecture to automatically manage scaling. Cloud Datastore uses a mix of indexes and query constraints so your queries scale with the size of your result set, not the size of your data set.```
 
 I've decided to give it a try, and test this statement. I've seeded the datastore with ~9000 entities, then ran a set of predefined queries, with pseudo-random search terms (which all had a guaranteed number of results).
