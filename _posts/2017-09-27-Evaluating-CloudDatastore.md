@@ -13,19 +13,12 @@ As I successfully integrated my dotnetcore API with Cloud Datastore I wanted to 
 
 # Performance
 Cloud Datastore is advertised as:
-> Massive scalability with high performance. Cloud Datastore uses a distributed architecture to automatically manage
-> scaling. Cloud Datastore uses a mix of indexes and query constraints so your queries scale with the size of your
-> result set, not the size of your data set.
+``` Massive scalability with high performance. Cloud Datastore uses a distributed architecture to automatically manage scaling. Cloud Datastore uses a mix of indexes and query constraints so your queries scale with the size of your result set, not the size of your data set.```
 
 I've decided to give it a try, and test this statement. I've seeded the datastore with ~9000 entities, then ran a set of predefined queries, with pseudo-random search terms (which all had a guaranteed number of results).
 Here are the results:
 
-| Pagesize      | Avg. time       |
-| ------------- |:---------------:|
-| 10            | 110 ms          |
-| 100           | 165 ms          |
-| 1000          | 1300 ms         |
-
+![](/images/articles/testresult.png "Query test result")
 *(The average time is calculated from 10 consecutive runs.)*
 
 As you can see, the execution time has a linear correlation with the number of returned entities. It makes sense, as I think the majority of the execution time is probably spent on serialising and de-serialising the result set.
@@ -59,7 +52,7 @@ First, you have to enable the Admin application on the Cloud Console:
 Once you've done that, it spins up a python app for you using the App Engine, which will run the Cloud Datastore admin application. I'm not sure why do we need 2 separate UIs for administration, but hey.
 
 From there, you can back up your entities to a Google Cloud Storage bucket.
-![alt text](/images/articles/console_admin.png "Admin application - Backup screen")
+![alt text](/images/articles/backup.png "Admin application - Backup screen")
 
 The restore procedure is similar, just enter the path to your bucket, and click import.
 It certeainly doesn't *feel* very sophisticated, but it's still *waay* better than DynamoDb in this regard.
