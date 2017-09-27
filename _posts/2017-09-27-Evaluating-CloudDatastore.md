@@ -1,11 +1,11 @@
 ---
 layout: post
-title: Evaluating CloudDatastore
+title: Evaluating Cloud Datastore
 date:   2017-09-27 23:07:00 +0100
 categories: Blu Cloud Datastore Full-text search dotnetcore
 ---
 
-As I successfully integrated my dotnetcore API with Cloud Datastore I wanted to give it a spin, and evaluate it in terms of:
+As I successfully integrated my dotnetcore API with Cloud Datastore I wanted to give it a quick spin, and evaluate it in terms of:
 * Performance (entity retrieval speed)
 * Filtering capabilities / Full-text search
 * Backup / Restore
