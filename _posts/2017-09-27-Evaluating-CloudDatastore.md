@@ -30,7 +30,7 @@ What I found interesting is the sheer amount of indexes it generates to the data
 ![alt text](/images/articles/datastore.png "Cloud Datastore Dashboard")
 
 As you can see, the size of the indexes is **6 times** the size of the actual data.
-And I didn't even specified custom indexes yet...worth keeping this in mind!
+And I haven't even specified custom indexes yet...worth keeping this in mind!
 
 # Filtering / Full-text search
 Querying the datastore is a really straightforward process, and it's also [heavily documented here](https://cloud.google.com/datastore/docs/concepts/queries#filters)
