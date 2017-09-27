@@ -19,6 +19,7 @@ I've decided to give it a try, and test this statement. I've seeded the datastor
 Here are the results:
 
 ![](/images/articles/testresult.png "Query test result")
+
 *(The average time is calculated from 10 consecutive runs.)*
 
 As you can see, the execution time has a linear correlation with the number of returned entities. It makes sense, as I think the majority of the execution time is probably spent on serialising and de-serialising the result set.
