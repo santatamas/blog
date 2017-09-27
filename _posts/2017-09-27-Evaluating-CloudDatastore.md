@@ -35,7 +35,7 @@ And I haven't even specified custom indexes yet...worth keeping this in mind!
 # Filtering / Full-text search
 Querying the datastore is a really straightforward process, and it's also [heavily documented here](https://cloud.google.com/datastore/docs/concepts/queries#filters)
 
-What was a bit disappointing though is that fact that just like most of the mainstream NoSql services, Cloud Datastore also lacks full-text search capabilities.
+What was a bit disappointing though is the fact that just like most mainstream NoSql services, Cloud Datastore also lacks full-text search capabilities.
 Google's recommendation is to spin up an ElasticSearch VM or cluster, and use it for indexing and searching the DB. In early 2016, Eastic Cloud has launched on GCloud officially, which means that now you can deploy a preconfigured ElasticSearch cluster with 1 click.
 
 Fair enough, but that would require another VM instance (or more, the default setup costs you a few hundred dollars a month!), and I'm aiming for the cheapest - but still viable - solution.
