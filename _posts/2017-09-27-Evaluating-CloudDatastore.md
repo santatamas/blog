@@ -6,7 +6,6 @@ categories: Blu Cloud Datastore Full-text search dotnetcore
 ---
 
 As I successfully integrated my dotnetcore API with Cloud Datastore I wanted to give it a spin, and evaluate it in terms of:
-
 * Performance (entity retrieval speed)
 * Filtering capabilities / Full-text search
 * Backup / Restore
