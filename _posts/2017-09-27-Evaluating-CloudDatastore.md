@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Evaluating CloudDatastore
-date:   2017-09-21 21:57:00 +0100
+date:   2017-09-27 23:07:00 +0100
 categories: Blu Cloud Datastore Full-text search dotnetcore
 ---
 
