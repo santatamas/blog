@@ -29,8 +29,8 @@ Personally, I'm quite satisfied with the performance, especially considering tha
 What I found interesting is the sheer amount of indexes it generates for the dataset **by default**.
 ![alt text](/images/articles/datastore.png "Cloud Datastore Dashboard")
 
-As you can see, the size of the indexes is **6 times** the size of the actual data.
-And I haven't even specified custom indexes yet...worth keeping this in mind!
+The size of the indexes is **6 times** the size of the actual data!
+And I haven't even specified custom indexes yet...worth keeping this in mind...
 
 # Filtering / Full-text search
 Querying the datastore is a really straightforward process, and it's also [heavily documented here](https://cloud.google.com/datastore/docs/concepts/queries#filters)
@@ -60,9 +60,4 @@ It certeainly doesn't *feel* very sophisticated, but it's still *waay* better th
 # Conclusion
 Cloud Datastore definitely has it's drawbacks, and you WILL have to make compromises along the way. But the price / availability / performance ratio is *soo good* that it's very hard to say no. I'll stick to it for the next few months as it won't cost me a dime, but it's highly possible that I'll have to swap it to a more feature-rich DB engine in the future.
 
-
-
-
-
-
-
+Cheers!
