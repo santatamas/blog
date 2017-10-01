@@ -55,7 +55,7 @@ From the infrastracture viewpoint, it eliminates some complications from the bac
 I'm encoding all necessary information in a JWT token, which is then used for authentication and basic data storage for the frontend (like user details).
 
 ## Cost efficiency
-With the current setup, I only have to pay for:
+With the current setup, I only have to pay for the followings:
 
 * Github account
 * Domain name
@@ -64,7 +64,7 @@ With the current setup, I only have to pay for:
 
 Google is nice enough to give you **$300** after signing up for a cloud account, which can be used during the first 12months.
 
-# 1 click end-to-end deployment process
+## One click end-to-end deployment process
 If you want to make your life easier, you better automate everything. You'll never have to worry about releasing anything ever again.
 
 Let's see how a typical release cycle looks like:
@@ -72,15 +72,15 @@ Let's see how a typical release cycle looks like:
 * You push your code to your master branch.
 * Via webhook integration, Circle picks up the changes and kicks off the build:
   * Compile the 2 projects (frontend, and backend)
-  * Builds 2 docker images from the build artifacts
-  * Push the new images to my private container registry, tagged with the build number
+  * Build 2 docker images from the build artifacts
+  * Push the new images to the private container registry, tagged with the build number
   * Use kubectl to update the image versions in the cluster
   * Send me a message on Slack with the build details
-* The image version update triggers a Kubernetes deployment update, which downloads the new images, and does a zero-downtime upgrade
+* The image version update triggers a Kubernetes deployment update, which does a zero-downtime upgrade
 
-The whole process takes **less than 5 minutes**. Even this can be halved by subscribing to Circle's layer caching service, which prevents the build server to re-download the build container images (we're talking about 2-3Gb here - *ouch!*).
+The whole process takes **less than 5 minutes**. Even this can be halved by subscribing to Circle's layer caching service, which prevents the build server from re-downloading the build container images (we're talking about 2-3Gb here - *ouch!*).
 
-# Improvement areas
+## Improvement areas
 The current setup is far from complete; or production ready. It's definitely a nice start, but it still misses a few key requirements for normal operation.
 
 I'm planning to add the following features during the next few months:
