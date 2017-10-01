@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Building Blu - Architecture
+title: Building Blu - Infrastructure
 date:   2017-10-01 11:58:00 +0100
 categories: Blu Cloud Kubernetes dotnetcore CDN DevOps Infrastructure
 ---
@@ -16,7 +16,7 @@ In this article we're going to go through the architectural details of our new w
 
 <a href="/images/articles/blu_architecture_v1.jpg">![](/images/articles/blu_architecture_v1.jpg "Architecture overview")</a>
 
-*(High-level architecture diagram)*
+*(High-level infrastructure diagram)*
 
 # Goals
 When I started planning the whole thing, I had a few basic requirements in mind regarding the operation and maintainability of the system.
