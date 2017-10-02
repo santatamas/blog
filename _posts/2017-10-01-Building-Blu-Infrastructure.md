@@ -9,7 +9,7 @@ In the past few days I've been working on setting up the infrastructure for my c
 
 I've been mostly involved in projects using AWS, so I have a fairly good understanding of its capabilities. Hence I thought this is a good opportunity to put something live on another cloud platform to get a good comparison, see the pro/cons, etc.
 
-I have to say that working with GCloud isn't that much different. The services it offers is mostly comparable to AWS'.
+I have to say that working with GCloud isn't that much different. The services it offers are mostly comparable to AWS'.
 At least the ones I want to use anyway.
 
 In this article we're going to go through the architectural details of our new webapp.
@@ -19,7 +19,7 @@ In this article we're going to go through the architectural details of our new w
 *(High-level infrastructure diagram)*
 
 # Goals
-When I started planning the whole thing, I had a few basic requirements in mind regarding the operation and maintainability of the system.
+When I started planning, I had a few basic requirements in mind regarding the operation and maintainability of the system.
 
 * Proper source control
 * End-to-end CI/CD pipeline
