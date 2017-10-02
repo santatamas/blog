@@ -27,7 +27,7 @@ When I started planning, I had a few basic requirements in mind regarding the op
 * Stateless execution, and immutable backend
 * Cost efficiency
 
-To be fair, I should have started with a very simple walking skeleton, but I've already had an Angular application and an API backend ready for deployment, so it was a bit more complicated to put everything in place.
+To be fair, I should have started with a very simple walking skeleton, but I've already had an Angular application and an API ready for deployment, so it was a bit more complicated to put everything in place.
 
 ## Source Control
 This was a no-brainer, as I love Git. I already have a Github subscription, so I created a new private repo, and that's pretty much it.
