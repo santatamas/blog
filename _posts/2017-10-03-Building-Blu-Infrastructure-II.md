@@ -8,17 +8,17 @@ categories: Blu Cloud Kubernetes dotnetcore CDN DevOps Infrastructure
 In the [previous post](/Building-Blu-Infrastructure/) we had a look at the high-level overview of the infrastructure of our shiny new webapp. Now it's time to take a deep-dive into the implementation details. I know you're stoked to see some actual code, so here we go!
 
 # Dockerising the applications
-In order to be able to deploy our apps to the Kubernetes cluster, first we have to build Docker container images for them. If you remember, we're dealing with an Angular4 SPA, and a dotnetcore backend.
+To be able to deploy our apps to Kubernetes, we have to build Docker container images for the apps. If you remember, we're dealing with an Angular4 SPA, and a dotnetcore backend.
 
-You might wonder why I chose to use a container instead of using Google CDN to distribute the static html/JS files for the SPA. While the latter might seem to be the straightforward choice in most cases, I have several reasons why I you'd want to go with the other.
+You might wonder why I chose to serve static files from a container instead of using Google CDN for distribution. While the latter might seem to be the straightforward choice in most cases, I have several reasons why I you'd want to go with the other.
 
-* Container makes versioning easy. I can tag my container with the build number, and push it to Kubernetes, which means I can always easily roll back any changes without a fuss.
-* Invalidating CDN caches is *ssllloooww*. It's not a big deal, but if and when the house is on fire, it's a pain to push out anything quickly.
+* Containers make versioning easy. I can tag them with the build numbers, and use that to deploy and roll back any changes without a fuss.
+* Invalidating CDN cache is *ssllloooww*. It's not a big deal, but if and when the house is on fire, it's a pain to push out anything quickly.
 * It's a well-known practice to put a proxy in front of [Kestrel](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/servers/kestrel?tabs=aspnetcore2x), as it's not necessarily ready to be exposed to the public.
 
-These reasons lead me to settle with an Nginx container, which is responsible for serving static content, and proxy all traffic to **/api** to my backend.
+These reasons lead me to settle with an Nginx container, which is responsible for serving static content, and proxy all traffic from **/api** to my backend.
 
-Fortunately, configuring Nginx as a proxy is *REALLY* easy.
+Fortunately, configuring Nginx as a proxy is *really* easy.
 ``` javascript
 server {
     listen 80;
@@ -35,18 +35,18 @@ server {
     }
 }
 ```
-In this config you can see that Nginx is serving all static content (and index.html by default) on the root, and forwards all calls from **/api** to my backend Api, running on port 8080. The **localhost** url is right in this case, as these 2 containers will sit in the same [Pod](https://kubernetes.io/docs/concepts/workloads/pods/pod/), so they can communicate through the loopback interface.
+In this config you can see that Nginx is serving all static content (and index.html by default) from root, and forwards all calls from **/api** to my backend Api, running on port 8080. The **localhost** url is right in this case, as these 2 containers will sit in the same [Pod](https://kubernetes.io/docs/concepts/workloads/pods/pod/), so they can communicate through the loopback interface.
 
-Let's wrap this bad boy with our SPA into a container.
+Let's wrap this with our SPA into a container.
 *(if you're not familiar with [Dockerfiles](https://docs.docker.com/engine/reference/builder/), now is the right time to start ;))*
 ```
 FROM nginx
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY production /usr/share/nginx/html
 ```
-What happens here is that we take the official Nginx image, copy the config and contents of the production folder - (Angular release artifacts).
+What happens here is that we take the official Nginx image, copy the config and contents of the production folder - (Angular release artifacts). So far so good.
 
-So far so good. If you build this and spin it up, you'll be able to navigate to `http://localhost`, and see the app running:
+If you build this and spin it up, you'll be able to navigate to `http://localhost`, and see the app running:
 ``` shell
 docker build -t myproject/blu-spa:latest .
 docker run -d -p 80:80 myproject/blu-spa:latest
@@ -121,6 +121,7 @@ spec:
 status:
   loadBalancer: {}
 ```
+The most important thing about this config is the `type: LoadBalancer` part, because this tells the service to expose its ports to the public, and act as a loadbalancer in front of the deployment pods. You can read more about Service types [here](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services---service-types).
 
 Deployment:
 ``` yaml
@@ -142,17 +143,6 @@ spec:
       containers:
       - image: eu.gcr.io/{GOOGLE_PROJECT_ID}/blu-api:latest
         name: blu-api
-        env:
-        - name: GCLIUD_PROJECT_ID
-          value: {GOOGLE_PROJECT_ID}
-        - name: GOOGLE_APPLICATION_CREDENTIALS
-          value: ./google_creds.json
-        - name: JWT_ISSUER
-          value: {YOUR_DOMAIN}
-        - name: JWT_PRIVATE_KEY_FILE
-          value: ./blu-dev.pem
-        - name: JWT_PUBLIC_KEY_FILE
-          value: ./blu-dev.pub.pem
         resources: {}
       - image: eu.gcr.io/s{GOOGLE_PROJECT_ID}/blu-spa:latest
         name: blu-spa
@@ -160,13 +150,18 @@ spec:
       restartPolicy: Always
 status: {}
 ```
+The deployment config specifies our 2 container images, with names. I've omitted some parts here, but you can use environment variables, port declarations and others things, just like in docker-compose.
+The `replicas` config is set to 1, as I only have 1 node for now.
 
-We can use [Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/) to create the deployment and service in our cluster:
+We can use [Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/) to create the deployment and service in our cluster from these yamls.
 ```
 kubectl create -f blu-deployment.yaml
 kubectl create -f blu-service.yaml
 ```
 
 If you check your cluster now, you should be able to see your deployment up and running.
+
+# Coming up next...
+Now that we successfully deployed our application containers to Kubernetes, in the next post we'll automate the building and deployment process with CircleCI.
 
 
