@@ -1,8 +1,7 @@
 ---
-layout: post
-title: Building Blu - Introduction
+title: Building a social media site - Introduction
 date:   2017-09-20 23:30:00 +0100
-categories: Blu programming architecture meta
+categories: programming architecture meta
 ---
 
 In my previous post I mentioned that I'm working on a personal project. I've had several smaller pet projects/experiments in the past, as I really believe that the easiest way of learning a new technology / design pattern / methodology is to actually dig elbow deep into it, and just build something that **works**, and **maintainable**. Although .NET has always been in my main focus, I've built websites in PHP, mobile games in Java/Swift, 3D raymarching demo in GLSL, etc. as I'm constantly aiming to widen my horizon in different technology areas. And let's be frank, we all enjoy creating things. As engineers, it's in our nature.

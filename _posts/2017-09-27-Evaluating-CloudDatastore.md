@@ -1,8 +1,7 @@
 ---
-layout: post
 title: Evaluating Cloud Datastore
 date:   2017-09-27 23:07:00 +0100
-categories: Blu Cloud Datastore Full-text search dotnetcore
+categories: GCP Cloud Datastore Full-text search dotnetcore
 ---
 
 As I successfully integrated my dotnetcore API with Cloud Datastore I wanted to give it a quick spin, and evaluate it in terms of:
@@ -17,7 +16,7 @@ Cloud Datastore is advertised as:
 
 I've decided to give it a try, and test this statement. I've seeded the datastore with ~9000 entities, then ran a set of predefined queries, with pseudo-random search terms (which all had a guaranteed number of results).
 
-![](/images/articles/testresult.png "Query test result")
+![](/assets/images/articles/testresult.png "Query test result")
 
 *(The average time is calculated from 10 consecutive runs.)*
 
@@ -27,7 +26,7 @@ I have to mention that I ran the tests at home, and even though I have pretty go
 Personally, I'm quite satisfied with the performance, especially considering that it's free.
 
 What I found interesting is the sheer amount of indexes it generates for the dataset **by default**.
-![alt text](/images/articles/datastore.png "Cloud Datastore Dashboard")
+![alt text](assets/images/articles/datastore.png "Cloud Datastore Dashboard")
 
 The size of the indexes is **6 times** the size of the actual data!
 And I haven't even specified custom indexes yet...worth keeping this in mind...
@@ -47,12 +46,12 @@ I could tweak this by inserting word fragments into the search tags, but for now
 Doing backups and restores is surprisingly easy.
 
 First, you have to enable the Admin application on the Cloud Console:
-![alt text](/images/articles/console_admin.png "Admin section")
+![alt text](assets/images/articles/console_admin.png "Admin section")
 
 Once you've done that, it spins up a python app for you using the App Engine, which will run the Cloud Datastore admin application. I'm not sure why do we need 2 separate UIs for administration, but hey.
 
 From there, you can back up your entities to a Google Cloud Storage bucket.
-![alt text](/images/articles/backup.png "Admin application - Backup screen")
+![alt text](assets/images/articles/backup.png "Admin application - Backup screen")
 
 The restore procedure is similar, just enter the path to your bucket, and click import.
 It certeainly doesn't *feel* very sophisticated, but it's still *waay* better than DynamoDb in this regard.

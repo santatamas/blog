@@ -1,8 +1,7 @@
 ---
-layout: post
 title: Using Cloud Datastore with dotnetcore
 date:   2017-09-21 21:57:00 +0100
-categories: Blu Docker dotnetcore
+categories: GCP Cloud Docker dotnetcore
 ---
 
 As part of my ongoing investigation into possible DB technologies, I've decided to give Cloud Datastore a try.

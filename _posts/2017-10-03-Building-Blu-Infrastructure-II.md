@@ -1,6 +1,5 @@
 ---
-layout: post
-title: Building Blu - Infrastructure II.
+title: Building a social media site - Infrastructure II.
 date:   2017-10-02 01:31:00 +0100
 categories: Blu Cloud Kubernetes dotnetcore CDN DevOps Infrastructure
 ---
@@ -81,7 +80,7 @@ gcloud docker -- push eu.gcr.io/{GOOGLE_PROJECT_ID}/blu-spa:latest
 
 # Setting up a Kubernetes Cluster
 First, let's take a closer look to our Kubernetes cluster. As a reminder, here how it looks like:
-<a href="/images/articles/infrastructure/kubernetes_cluster.png">![](/images/articles/infrastructure/kubernetes_cluster.png "Kubernetes Cluster")</a>
+<a href="/assets/images/articles/infrastructure/kubernetes_cluster.png">![](/assets/images/articles/infrastructure/kubernetes_cluster.png "Kubernetes Cluster")</a>
 
 Before I go into details, there are a few Kubernetes terminology you'll have to be familiar with in order to get what's going on with this setup.
 

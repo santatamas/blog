@@ -1,8 +1,7 @@
 ---
-layout: post
-title: Building Blu - Infrastructure
+title: Building a social media site - Infrastructure
 date:   2017-10-01 11:58:00 +0100
-categories: Blu Cloud Kubernetes dotnetcore CDN DevOps Infrastructure
+categories: GCP Cloud Kubernetes dotnetcore CDN DevOps Infrastructure
 ---
 
 In the past few days I've been working on setting up the infrastructure for my cloud webapp. I chose Google Cloud, because I had no previous experience with it. Sounds weird eh? You should always choose the right tools for the right job, but in this case it's also a learning experience for me.
@@ -14,7 +13,7 @@ At least the ones I want to use anyway.
 
 In this article we're going to go through the architectural details of our new webapp.
 
-<a href="/images/articles/blu_architecture_v1.jpg">![](/images/articles/blu_architecture_v1.jpg "Architecture overview")</a>
+<a href="/assets/images/articles/blu_architecture_v1.jpg">![](/assets/images/articles/blu_architecture_v1.jpg "Architecture overview")</a>
 
 *(High-level infrastructure diagram)*
 

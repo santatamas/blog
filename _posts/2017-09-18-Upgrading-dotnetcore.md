@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Upgrading dotnetcore broke NuGet in VS for Mac
 date:   2017-09-18 22:16:01 +0100
 categories: debug dotnetcore programming
